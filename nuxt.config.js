@@ -57,9 +57,17 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {}
+    // Source: https://medium.com/@birante/how-to-fix-eslint-error-in-nuxt-js-automatically-5c048e7ef938
+    extend(config, ctx) {
+      config.module.rules.push({
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        options: {
+          fix: true
+        }
+      })
+    }
   }
 }
