@@ -79,6 +79,7 @@ dist
 
 # IDE / Editor
 .idea
+*.sublime-workspace
 
 # Service worker
 sw.*
