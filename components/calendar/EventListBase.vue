@@ -99,42 +99,22 @@ export default {
     this.loadEvents()
   },
   methods: {
-    loadEvents() {
+    async loadEvents() {
       this.loading = true
 
-      setTimeout(() => {
+      try {
+        const events = await this.$axios.$get('/api/publicEvents')
+
+        this.events = events.map((event) => {
+          event.date = dayjs(event.date)
+
+          return event
+        })
+
         this.loading = false
-        this.events = [
-          {
-            name: 'Event A',
-            description:
-              'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde nesciunt et beatae, quisquam hic velit quasi accusantium incidunt, dignissimos saepe.',
-            date: dayjs('2020-04-15T15:00:00'),
-            location: 'Jena Paradies'
-          },
-          {
-            name: 'Event B',
-            description:
-              'Nihil, dicta. Amet quisquam tempora, optio? Eligendi porro rerum in consequatur exercitationem, assumenda inventore dolore ducimus praesentium explicabo officiis amet.',
-            date: dayjs('2020-04-15T18:00:00'),
-            location: 'Jena Paradies'
-          },
-          {
-            name: 'Event C',
-            description:
-              'Quibusdam reprehenderit ipsa modi officiis, delectus obcaecati, explicabo quis. Vel, consequuntur incidunt asperiores consequatur reprehenderit consectetur eveniet, quis a atque.',
-            date: dayjs('2020-05-8T11:30:00'),
-            location: 'Jena Paradies'
-          },
-          {
-            name: 'Event D',
-            description:
-              'Natus quam nam quis et dolor ullam saepe beatae aperiam. Ullam, repellendus. Asperiores reiciendis qui possimus perspiciatis, aliquam libero omnis!',
-            date: dayjs('2020-08-12T21:45:00'),
-            location: 'Jena Paradies'
-          }
-        ]
-      }, 200)
+      } catch (err) {
+        // TODO: Error state
+      }
     }
   }
 }
@@ -144,9 +124,9 @@ export default {
 .time,
 .location {
   background-size: 20px 20px;
-  background-position: left center;
+  background-position: left 6px;
   background-repeat: no-repeat;
-  padding: theme('spacing.1') 0 theme('spacing.1') theme('spacing.6');
+  padding: theme('spacing.1') 0 theme('spacing.1') theme('spacing.8');
 }
 
 .time {
