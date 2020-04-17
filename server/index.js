@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
@@ -23,8 +25,15 @@ async function start() {
     await builder.build()
   }
 
+  app.use(
+    '/api',
+    await apiRoutes({
+      publicId: process.env.PUBLIC_CAL_ID,
+      privateId: process.env.PRIVATE_CAL_ID
+    })
+  )
+
   // Give nuxt middleware to express
-  app.use('/api', apiRoutes)
   app.use(nuxt.render)
 
   // Listen the server

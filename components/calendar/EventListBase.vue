@@ -5,7 +5,7 @@
       <div
         v-for="[date, eventsOnDate] in eventsByDate"
         :key="date.format('YYYY-MM-DD')"
-        class="sm:flex py-4 border-b border-gray-400"
+        class="sm:flex py-4"
       >
         <div class="flex-initial sm:mr-8 flex sm:block items-baseline mb-4">
           <span class="block text-xl text-gray-800 order-2">{{
@@ -19,18 +19,22 @@
         <div class="flex-auto -mb-8">
           <div
             v-for="event in eventsOnDate"
-            :key="event.name"
-            class="mb-8 sm:flex"
+            :key="event.title"
+            class="mb-2 sm:mb-4 sm:flex border-l-4 border-gray-300 py-2 px-6"
           >
-            <div class="mr-8 mb-4">
-              <h2 class="text-lg font-bold text-gray-800">{{ event.name }}</h2>
-              <p class="max-w-4xl">
-                {{ event.description }}
-              </p>
+            <div class="mr-8 mb-4 flex-auto">
+              <h2 class="text-lg font-bold text-gray-800 mb-2">
+                {{ event.title }}
+              </h2>
+              <p class="max-w-4xl" v-html="event.description"></p>
             </div>
-            <div>
-              <span class="time block">{{ event.date.format('HH:mm') }}</span>
-              <span class="location block">{{ event.location }}</span>
+            <div class="flex-none sm:w-48">
+              <span v-if="event.start" class="time block">
+                {{ event.start.format('HH:mm') }}
+              </span>
+              <span v-if="event.location" class="location block">
+                {{ event.location }}
+              </span>
             </div>
           </div>
         </div>
@@ -69,22 +73,26 @@ export default {
 
       for (let i = 0, l = events.length; i < l; i++) {
         const event = events[i]
-        const eventDate = event.date.format('YYYY-MM-DD')
+        const eventDate = event.start.format('YYYY-MM-DD')
 
         if (eventsByDate.has(eventDate)) {
           const day = eventsByDate.get(eventDate)
           day.push(event)
           day.sort((a, b) => {
-            return a.date.isBefore(b.date) ? 1 : -1
+            return a.start.isBefore(b.start) ? -1 : 1
           })
         } else {
           eventsByDate.set(eventDate, [event])
         }
       }
 
-      return Array.from(eventsByDate).map(([date, events]) => {
-        return [dayjs(date), events]
-      })
+      return Array.from(eventsByDate)
+        .map(([date, events]) => {
+          return [dayjs(date), events]
+        })
+        .sort((a, b) => {
+          return a[0].isBefore(b[0]) ? -1 : 1
+        })
     }
   },
   watch: {
@@ -106,7 +114,7 @@ export default {
         const events = await this.$axios.$get('/api/publicEvents')
 
         this.events = events.map((event) => {
-          event.date = dayjs(event.date)
+          event.start = dayjs(event.start)
 
           return event
         })
