@@ -21,9 +21,26 @@ $ npm run generate
 
 For detailed explaination on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
-## Manual Deployment
+## Deployment
 
-For manual deployment the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#uninstalling-the-legacy-heroku-gem) is required. You will also need an heroku account and contribution rights to the heroku app **jenavsvirus-dev**.
+The demo is deployed to heroku. To work with the deployment process an heroku account and contribution rights to the heroku app **jenavsvirus-dev** are necessary. The deployed app is available under https://jenavsvirus-dev.herokuapp.com/. Also the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#uninstalling-the-legacy-heroku-gem) is required.
+
+### Set Environment Variables
+
+Environment variables are known as *Config Vars* on Heroku. Those are written to the `process.env` in Node.js.
+
+```bash
+# list all variables
+heroku config
+
+# set variable
+heroku config:set <KEY>=<VALUE>
+
+# remove variable
+heroku config:unset <KEY>
+```
+
+### Manual Deployment
 
 ```bash
 # log into heroku
@@ -32,8 +49,9 @@ heroku login
 # add heroku remote
 heroku git:remote -a jenavsvirus-dev
 
-# push branch 'dev' to heroku remote
+# test changes locally
+heroku local
+
+# push branch 'dev' to heroku remote (it's also possible to use other branches than 'dev')
 git push heroku dev:master
 ```
-
-The deployed app is available under https://jenavsvirus-dev.herokuapp.com/.
