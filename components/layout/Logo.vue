@@ -14,9 +14,10 @@
       ></path>
     </svg>
 
-    <span class="mt-1 font-bold">Jena Events</span>
+    <span class="text-3xl tracking-tight">KulturAgenda Jena</span>
   </nuxt-link>
 </template>
+
 <style scoped>
 .logo-link {
   animation: 1s appear;
@@ -27,7 +28,7 @@
 }
 
 .logo-link:hover {
-  color: theme('colors.indigo.700');
+  color: theme('colors.indigo.900');
 }
 
 .logo-link:hover .logo {

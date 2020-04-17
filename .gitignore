@@ -92,3 +92,6 @@ sw.*
 
 # Sublime
 .sublime-project
+
+# Google Creds
+_google_JenaVsVirus-Hackathon.json

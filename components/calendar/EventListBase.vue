@@ -26,6 +26,7 @@
               <h2 class="text-lg font-bold text-gray-800 mb-2">
                 {{ event.title }}
               </h2>
+              <!-- eslint-disable-next-line -->
               <p class="max-w-4xl" v-html="event.description"></p>
             </div>
             <div class="flex-none sm:w-48">
