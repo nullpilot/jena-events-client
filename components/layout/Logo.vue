@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="flex items-center logo-link" to="/">
+  <nuxt-link class="flex items-center logo-link" :to="{ name: 'index' }">
     <svg
       fill="transparent"
       stroke="currentColor"

@@ -28,15 +28,17 @@
         class="w-full block sm:flex sm:ml-auto sm:items-center sm:w-auto"
       >
         <nuxt-link
-          to="events/"
+          :to="{ name: 'veranstaltungsplaner' }"
           class="block mt-4 mx-0 sm:inline-block sm:mx-4 sm:mt-0 menu-link"
-          >Event-Kalender</nuxt-link
         >
+          Für Veranstalter
+        </nuxt-link>
         <a
           href="#"
           class="inline-block bg-white text-indigo-600 font-bold hover:bg-indigo-900 hover:text-white mt-4 px-4 py-2 leading-none border-none rounded-full sm:mt-0"
-          >Login</a
         >
+          Login
+        </a>
       </div>
     </div>
   </nav>
