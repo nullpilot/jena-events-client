@@ -13,11 +13,14 @@ class Server {
   }
 
   getUserbyEmail(email) {
+    console.log('getUserbyEmail' + email + ' ' + JSON.stringify(this.Users))
     const user = this.Users.find((User) => User.email === email)
+    console.log(user)
     return user
   }
 
   addUser(user) {
+    // TODO check for existic user with the name/email
     this.Users.push(user)
   }
 }

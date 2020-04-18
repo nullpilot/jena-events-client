@@ -5,6 +5,7 @@ const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
+const flash = require('express-flash')
 
 const bcrypt = require('bcrypt')
 const passport = require('passport')
@@ -60,11 +61,10 @@ async function start() {
       passport,
       (email) => {
         console.log('email')
-        server.getUserbyEmail()
+        server.getUserbyEmail(email)
       },
-      (id) => {
-        console.log('id')
-        server.getUserByName()
+      (name) => {
+        server.getUserByName(name)
       }
     )
 
@@ -78,7 +78,7 @@ async function start() {
     })
 
     app.use(express.urlencoded({ extended: false }))
-
+    app.use(flash())
     app.use(
       session({
         secret: server.conf.secret,
@@ -100,18 +100,34 @@ async function start() {
 }
 
 start()
+/*
+app.post('/login', checkNotAuthenticated, (req, res) => {
+  console.log('login body:' + JSON.stringify(req.body))
+  try {
+    passport.authenticate(
+      'local',
+      /*
+      {
+        successRedirect: '/',
+        failureRedirect: '/login'
+      },
+      function(req, res) {
+        console.log('passport user', req.user)
+        console.log('end login')
+      }
+    )
+  } catch (e) {
+    console.log(e)
+  }
 
-app.post(
-  '/login',
-  checkNotAuthenticated,
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-  })
-)
+}) */
+
+app.post('/login', passport.authenticate('local'), function(req, res) {
+  console.log('passport user', req.user)
+})
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
-  console.log('register body:' + req.body)
+  console.log('register body:' + JSON.stringify(req.body))
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
     const user = new User(req.body.name, req.body.email, hashedPassword)

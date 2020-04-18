@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "jenaevents-dev-274514",
+  "private_key_id": "a4b3f5c78d4afe6459c4b671d2469344933f500e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC0LasXQ/lWwgyj\nhvEaaEMVbwPenAezjmWd6XgLDUBOpCoPrduueQiSUZPwRm2r4pHnRcr6XqIlvXjD\nvmkqclEpQ3Lzbq4EMOU2UMWhzhJ4nw2RL9CjN32Wxxk9G+YllZ7hne4nWjPY6V94\nPI3nFfPROabPZPbttHkMvBOMT5XnRJnipBQbrk7d2876074a52u4nO4yTY2qis1l\nVOhGvNsC424vMEdiixY8os3Z81bKaYIhy33HlvdG/+EobVqHEyWsawiW1ORb6U9r\nPFqJxUIE9n5CzkBr/9BFV/MOPaYX5splwZpKUFkoiCO4iWsRUaWiIw6osfzECAvn\ndCMJelqVAgMBAAECggEAB4HfnxiLSxIgH1rVW5mnMegY69g/JJF0/8oP4RCsR+/k\ne21tuddRLseMt8uMxkdVIk3GJ1MfbnMhP7FaBcAS9vqDJPbM9Apq19iFuOLdN36+\nZ05BYzZCBVubsZrNUW4/2ya5cD+nPrfP7TKYtwgzIISbxAhw7CFDlJmW4ZcZ/TN3\nUCSTvA5uXPm4AWp9K8e5COZqWnmOVFPQ1PVxfO02s1LW+45LXhr9KTVaAHYYS4jO\nVeG1K0BYZu53cvvwV2USECnEyCMyoig5dk3OX9oe2x1yrGv93c5calYJFhh0Uvuw\nPonxO6KPV7V7STHKMSPt5OpVwW0ECQhoIRKHcqMAAQKBgQDYLoW8Hvwb+2EyGE8X\n0qqC0ISNbaxsIHCkoS7Zetqe5q87m/+eCAkxxV/JqQkchnrCFQ9q8tFjWPnLI9mS\nx+L0WdVRUCiK9H7c4PiCicMEbQfcSRQr7vEphM3hHY01vVLWVYEtWvEjUD9NzAYq\nHYgvsbvwrfefz6q2KKqHkjH9iQKBgQDVXYD67X440LilV0jIMcd1WSWSr0NOPOas\n8Y90EwFlD087ObIDMOlWEoa3JWfoHNRTLDsJncE8P2E84cJ37y5OVPnAmOzW5uXb\nrZVnuDZcmkdXDNodkekxb88/zYt2SBOmmsvyaYQuYdUODElvrXaNHCGd4HfZ4zK5\n20nO+02drQKBgH2kJDOeanW01ttvh2BYHqNinvc3e5NoEy+LQhhBr5fUiJmDY7+r\n+fQEO1SPumzqt6Pe65QDxbAQwTTQBB6rr3rGTxUwGjAQQz8KPURY3o/O8leT3XZf\nK6guuB0SuMQ34VISZb4/cZBNjk0fu6F0gnb9vDX4Vcd6wUOXRO0ACa/JAoGBAIh1\n2/cgi7jUrTN6Jp97TuEbme89zqMsSjBT8na/bQXwi7EKTnLCBoo5IRXjg5gtUBK9\n2ChnT94zfwJMNW81dv08Vdu7MsajOGGOnF6Qr5v8RCJFov6EgotOwlNBJ7AHmyHU\nIRoyKAruITBx5UnavFa1pj5uANlG+PtrZ8JMcbClAoGAV48UsCctGtLe82CE0gPK\nu11CwUntoWEghSD84mNP7BfzZRgk3QapsVuBlRIUeu2Y4h0jPZV88uYc96UesnG8\n2TSDvb4c89o3lP5jO4O/Z7cI4RfL24SnXK2Ro7kFudEwhmv5poMlDATR9/mBCKy2\nnx0yGItm+zVIn/zezaneAW0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "jenaevents-hackathon@jenaevents-dev-274514.iam.gserviceaccount.com",
+  "client_id": "100373957763337406098",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jenaevents-hackathon%40jenaevents-dev-274514.iam.gserviceaccount.com"
+}

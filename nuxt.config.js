@@ -19,7 +19,7 @@ module.exports = {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
-   ** Use values set in .env
+   ** Use values set in ..env
    */
   server: {
     port: process.env.PORT || 3000,
