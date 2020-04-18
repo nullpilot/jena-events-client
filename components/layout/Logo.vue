@@ -14,7 +14,7 @@
       ></path>
     </svg>
 
-    <span class="text-3xl tracking-tight">KulturAgenda Jena</span>
+    <span class="text-3xl tracking-tight">KulturPlaner Jena</span>
   </nuxt-link>
 </template>
 
