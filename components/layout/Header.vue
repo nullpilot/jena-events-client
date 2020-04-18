@@ -31,7 +31,7 @@
           :to="{ name: 'veranstaltungsplaner' }"
           class="block mt-4 mx-0 sm:inline-block sm:mx-4 sm:mt-0 menu-link"
         >
-          Für Veranstalter
+          Veranstaltungen verwalten
         </nuxt-link>
         <a
           href="#"

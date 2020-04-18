@@ -6,7 +6,7 @@
       <p class="mb-6 text-sm">
         Hier können Sie eine neue Veranstaltung anlegen. Bitte beachten Sie,
         dass diese vorerst nicht öffentlich gemacht wird und nur von anderen
-        Veranstaltern eingesehen werden kann. Sie können das Event unter
+        Veranstalter:innen eingesehen werden kann. Sie können das Event unter
         <a href="#">Meine Veranstaltungen</a> offiziell und damit öffentlich
         einsehbar machen.
       </p>
