@@ -12,11 +12,11 @@ class Server {
     return this.Users.find((User) => User.name === name)
   }
 
-  getUserbyEmail(email) {
+  getUserbyEmail(email, callback) {
     console.log('getUserbyEmail' + email + ' ' + JSON.stringify(this.Users))
     const user = this.Users.find((User) => User.email === email)
     console.log(user)
-    return user
+    callback(user)
   }
 
   addUser(user) {

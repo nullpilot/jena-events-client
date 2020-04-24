@@ -2,6 +2,8 @@
  * @author Johannes Häuser
  */
 
+const bcrypt = require('bcrypt')
+
 class User {
   constructor(name, email, pw) {
     this.name = name
@@ -31,6 +33,10 @@ class User {
 
   setEmail(email) {
     this.email = email
+  }
+
+  validPassword(password) {
+    return bcrypt.compare(password, this.hashedPassword)
   }
 }
 
