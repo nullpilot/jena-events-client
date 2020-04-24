@@ -10,9 +10,9 @@ async function initApi({ publicId, privateId }) {
   const calendar = google.calendar({ version: 'v3', auth: authClient })
 
   router.get('/event/list', async function(req, res) {
-    const events = await getCalendarEvents(calendar, publicId)
+    const events = await getCalendarEvents(calendar, privateId)
 
-    res.send(events)
+    res.send(events.filter((e) => e.visibility === 'public'))
   })
 
   router.get('/event/listPrivate', async function(req, res) {
@@ -28,6 +28,7 @@ async function initApi({ publicId, privateId }) {
       summary: title,
       description,
       location,
+      visibility: 'private',
       start: {
         dateTime: start.format(),
         timeZone: 'Europe/Berlin'
@@ -44,6 +45,20 @@ async function initApi({ publicId, privateId }) {
     })
 
     return res.sendStatus(eventRes.status)
+  })
+
+  router.put('/event/:id/publish', bodyParser.json(), async function(req, res) {
+    const id = req.params.id
+    const publicState = req.body.public ? 'public' : 'private'
+    const eventRes = await calendar.events.patch({
+      calendarId: privateId,
+      eventId: id,
+      resource: { visibility: publicState }
+    })
+
+    return res
+      .status(eventRes.status)
+      .send({ visibility: eventRes.data.visibility })
   })
 
   router.delete('/event/:id', async function(req, res) {
@@ -69,6 +84,7 @@ async function getCalendarEvents(calendar, calendarId) {
       location: event.location || '',
       description: event.description || '',
       start: event.start.dateTime,
+      visibility: event.visibility,
       end: event.end.dateTime,
       host: getHostInfo(event, i)
     }

@@ -48,6 +48,11 @@
               <div class="mr-8 mb-4 flex-auto">
                 <h2 class="text-lg font-bold text-gray-800 mb-2">
                   {{ event.title }}
+                  <span
+                    v-if="event.visibility !== 'public'"
+                    class="text-base italic font-normal text-gray-500"
+                    >(nicht öffentlich)</span
+                  >
                 </h2>
 
                 <!-- eslint-disable-next-line -->
@@ -97,6 +102,31 @@
                     </button>
                   </div>
 
+                  <button
+                    title="Veröffentlichen"
+                    :class="[
+                      'inline-block ml-1 mr-2 text-xs rounded',
+                      event.visibility === 'public'
+                        ? 'text-green-500 hover:text-red-400'
+                        : 'text-gray-500 hover:text-green-500'
+                    ]"
+                    @click.prevent="publishEvent(event)"
+                  >
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      class="w-5 h-5"
+                    >
+                      <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      ></path>
+                    </svg>
+                  </button>
                   <button
                     title="Bearbeiten (TODO)"
                     class="inline-block ml-1 mr-2 text-xs rounded text-gray-500 hover:text-indigo-600"
@@ -254,6 +284,29 @@ export default {
           })
         } else {
           throw new Error('Veranstaltung konnte nicht gelöscht werden')
+        }
+      } catch (err) {
+        console.error(err) // eslint-disable-line no-console
+      }
+    },
+    async publishEvent(event, newPublicState) {
+      try {
+        const endpoint = `/api/event/${event.id}/publish`
+        console.log('UPDATING STATE TO ', event.visibility !== 'public')
+        const res = await this.$axios.put(endpoint, {
+          public: event.visibility !== 'public'
+        })
+
+        if (res.status === 200) {
+          const i = this.events.indexOf(event)
+          event.visibility = res.data.visibility
+
+          if (i >= 0) {
+            // Force update of nested prop
+            this.$set(this.events, i, event)
+          }
+        } else {
+          throw new Error('Veranstaltung konnte nicht veröffentlicht werden')
         }
       } catch (err) {
         console.error(err) // eslint-disable-line no-console
