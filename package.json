@@ -29,7 +29,7 @@
     "dayjs": "^1.8.24",
     "express": "^4.16.4",
     "googleapis": "^48.0.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^3.4.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
